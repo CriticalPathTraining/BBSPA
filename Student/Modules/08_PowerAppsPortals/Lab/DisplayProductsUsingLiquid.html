@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="row" style="padding-top:16px;">
+    {% entityview logical_name:'cptlabs_product', name:"Active Products", page_size: 50 %}
+    {% assign products = entityview.records |  order_by: "cptlabs_productcode"  %}
+    {% for item in products %}
+    <div class="col-lg-4">
+      <div class="panel panel-default">
+        <div class=" panel-heading">{{ item.cptlabs_productname }}</div>
+        <div class="panel-body" style="border:1px solid #CCCCCC;height:90px;">
+          <img style="float:left;" src="{{ item.cptlabs_productimageurl }}" />
+          <div>{{ item.cptlabs_productdescription }}</div>
+          <div style="clear:left"></div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+    {% endentityview %}
+  </div>
+</div>
